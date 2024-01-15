@@ -9454,7 +9454,11 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  background-color: #fb6340 !important;
+  background-color: #1746A2 !important;
+}
+
+.bg-indigo{
+  background-color: #1746A2 !important;
 }
 
 .bg-secondary {

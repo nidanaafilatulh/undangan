@@ -81,7 +81,7 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
+  background-color: var(--bs-white);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -213,7 +213,7 @@ small, .small {
 
 mark, .mark {
   padding: 0.2em;
-  background-color: #fcf8e3;
+  background-color: #fefefe;
 }
 
 sub,
@@ -9454,11 +9454,15 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  background-color: #fb6340 !important;
+  background-color: #1746A2!important;
 }
 
 .bg-secondary {
   background-color: #8392ab !important;
+}
+
+.bg-indigo{
+  background-color: #1746A2 !important
 }
 
 .bg-success {
@@ -19100,7 +19104,7 @@ textarea.form-control-lg {
 }
 
 .badge.bg-primary {
-  background: #fb6340;
+  background: #f1111;
 }
 
 .badge.bg-secondary {

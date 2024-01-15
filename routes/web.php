@@ -29,6 +29,9 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;            
 use App\Http\Controllers\UserController;            
+use App\Http\Controllers\KomisiTertransferController;            
+use App\Http\Controllers\PaketController;            
+use App\Http\Controllers\TransaksiController;            
 
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
@@ -39,14 +42,17 @@ Route::get('/admin', [HomeAdminController::class, 'index'])->name('admin');
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.perform');
-Route::post('/users', [UserController::class, 'index'])->name('users');
+Route::get('/users', [UserController::class, 'show'])->name('users');
+
+Route::get('/customerShow', [UserController::class, 'customerShow'])->name('customerShow');
+Route::get('/affiliateShow', [UserController::class, 'affiliateShow'])->name('affiliateShow');
+Route::get('/komisi', [KomisiTertransferController::class, 'show'])->name('komisi');
+Route::post('/komisi', [KomisiTertransferController::class, 'store'])->name('komisitertransfer.store');
+Route::get('/paket', [PaketController::class, 'show'])->name('paket');
+Route::get('/transaksi', [TransaksiController::class, 'show'])->name('transaksi');
 
 
-//Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 Route::group(['middleware' => 'guest'], function () {
-	//Route::post('/register', [RegisterController::class, 'store'])->name('register.perform');
-	// Route::get('/login', [LoginController::class, 'show'])->name('login');
-	// Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
 	Route::get('/reset-password', [ResetPassword::class, 'show'])->name('reset-password');
 	Route::post('/reset-password', [ResetPassword::class, 'send'])->name('reset.perform');
 	Route::get('/change-password', [ChangePassword::class, 'show'])->name('change-password');

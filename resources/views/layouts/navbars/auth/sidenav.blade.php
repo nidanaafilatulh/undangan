@@ -1,12 +1,12 @@
-<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+<aside class="sidenav bg-indigo navbar navbar-vertical navbar-expand-xs border-0 border-radius my-3 fixed-start"
     id="sidenav-main">
     <div class="sidenav-header">
-        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-sticky end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="{{ route('home') }}"
             target="_blank">
             {{-- <img src="./img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo"> --}}
-            <span class="ms-4 font-weight-bold">Cerita Bahagianya</span>
+            <span class="ms-4 font-weight-bold text-light">Cerita Bahagianya</span>
         </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -16,7 +16,7 @@
                 {{-- <div class="ps-4">
                     <i class="fab fa-laravel" style="color: #f4645f;"></i>
                 </div> --}}
-                <h6 class="ms-4 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Menu Utama</h6>
+                <h6 class="ms-4 text-uppercase text-xs font-weight-bolder opacity-6 mb-0 text-light">Menu Utama</h6>
             </li>
             @if(Auth::user()->role == 'user')
             <li class="nav-item">
@@ -25,60 +25,70 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1 text-light">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}" href="{{ route('profile') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                        <i class="ni ni-single-02 text-white text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Undangan Saya</span>
+                    <span class="nav-link-text ms-1 text-light">Undangan Saya</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'user-management']) }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
+                        <i class="ni ni-bullet-list-67 text-white text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Buat Undangan</span>
+                    <span class="nav-link-text ms-1 text-light">Buat Undangan</span>
                 </a>
             </li>
             @elseif(Auth::user()->role == 'admin')
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('admin') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1 text-light">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'users' ? 'active' : '' }}" href="{{ route('users') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">User</span>
+                    <span class="nav-link-text ms-1 text-light">User</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}" href="{{ route('profile') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'paket' ? 'active' : '' }}" href="{{ route('paket') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Tema</span>
+                    <span class="nav-link-text ms-1 text-light">Paket Langganan</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'user-management']) }}">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
+                <a class="nav-link {{ Route::currentRouteName() == 'transaksi' ? 'active' : '' }}" href="{{ route('transaksi') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Paket Langganan</span>
+                    <span class="nav-link-text ms-1 text-light">Transaksi</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Route::currentRouteName() == 'komisi' ? 'active' : '' }}" href="{{ route('komisi') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1 text-light">Komisi</span>
                 </a>
             </li>
             @elseif(Auth::user()->role == 'affiliate')
@@ -88,7 +98,7 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1 text-light">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -97,7 +107,7 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Kupon</span>
+                    <span class="nav-link-text ms-1 text-light">Kupon</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -106,7 +116,7 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Riwayat Komisi</span>
+                    <span class="nav-link-text ms-1 text-light">Riwayat Komisi</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -114,7 +124,7 @@
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Riwayat Komisi Tertransfer</span>
+                    <span class="nav-link-text ms-1 text-light">Riwayat Komisi Tertransfer</span>
                 </a>
             </li>
             @endif
