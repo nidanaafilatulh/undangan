@@ -8,16 +8,16 @@ class UserController extends Controller
 {
     public function show()
     {
-        return view('pages.users');
+        return view('pages.admin.users');
     }
 
     public function customerShow()
     {
-        return view('pages.customer');
+        return view('pages.admin.customer');
     }
 
     public function affiliateShow()
     {
-        return view('pages.affiliate');
+        return view('pages.admin.affiliate');
     }
 }

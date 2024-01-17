@@ -32,7 +32,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KomisiTertransferController;            
 use App\Http\Controllers\PaketController;            
 use App\Http\Controllers\TransaksiController;            
-
+use App\Http\Controllers\RiwayatKomisiController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.perform');
@@ -41,25 +41,27 @@ Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
 
 Route::get('/customer', [HomeController::class, 'index'])->name('customer');
-Route::get('/affiliate', [HomeAffiliateController::class, 'index'])->name('affiliate');
 
+Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
+	Route::get('/', [HomeAdminController::class, 'index'])->name('admin');
+		Route::get('/users', [UserController::class, 'show'])->name('users');
+		Route::get('/customerShow', [UserController::class, 'customerShow'])->name('customerShow');
+		Route::get('/affiliateShow', [UserController::class, 'affiliateShow'])->name('affiliateShow');
+		Route::get('/komisi', [KomisiTertransferController::class, 'show'])->name('komisi');
+		Route::post('/komisi', [KomisiTertransferController::class, 'store'])->name('komisitertransfer.store');
+		Route::get('/paket', [PaketController::class, 'show'])->name('paket');
+		Route::get('/transaksi', [TransaksiController::class, 'show'])->name('transaksi');
+});
 
-    
-
-Route::prefix('admin')->group(function () {
-    Route::get('/', [HomeAdminController::class, 'index'])->name('admin');
-	Route::get('/users', [UserController::class, 'show'])->name('users');
-	Route::get('/customerShow', [UserController::class, 'customerShow'])->name('customerShow');
-	Route::get('/affiliateShow', [UserController::class, 'affiliateShow'])->name('affiliateShow');
-	Route::get('/komisi', [KomisiTertransferController::class, 'show'])->name('komisi');
-	Route::post('/komisi', [KomisiTertransferController::class, 'store'])->name('komisitertransfer.store');
-	Route::get('/paket', [PaketController::class, 'show'])->name('paket');
-	Route::get('/transaksi', [TransaksiController::class, 'show'])->name('transaksi');
+Route::prefix('affiliate')->group(function () {
+	
 
 });
 
-
-
+Route::group(['middleware' => 'auth','prefix' => 'affiliate'], function () {
+	Route::get('/', [HomeAffiliateController::class, 'index'])->name('affiliate');
+	Route::get('/riwayatkomisi',[RiwayatKomisiController::class, 'index'])->name('riwayatkomisi');
+});
 
 Route::group(['middleware' => 'guest'], function () {
 	Route::get('/reset-password', [ResetPassword::class, 'show'])->name('reset-password');
@@ -67,10 +69,9 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::get('/change-password', [ChangePassword::class, 'show'])->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->name('change.perform');
 });
-Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
-
 	
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');

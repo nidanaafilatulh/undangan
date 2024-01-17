@@ -30,45 +30,40 @@
             </div>  
         </div>       
         <div class="row mt-4">
-            <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <h5 class="font-weight-bolder">Jumlah Tamu Undangan</h5>
-                                    <p class="mb-0">20</p>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
+            <div class="col-md-6 mt-md-0 mt-4">
+                <a href="/affiliateShow">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-header mx-4 p-3 text-center">
+                            <div
+                                class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+                                <i class="fab fa-paypal opacity-10"></i>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <h5 class="font-weight-bolder">Jumlah Ucapan</h5>
-                                    <p class="mb-0">20</p>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
+                        <div class="card-body pt-0 p-3 text-center">
+                            <h6 class="text-center mb-0">Affiliate</h6>
+                            <hr class="horizontal dark my-3">
+                            <h5 class="mb-0">5</h5>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
-            
+            <div class="col-md-6 mt-md-0 mt-4">
+                <a href="/affiliateShow">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-header mx-4 p-3 text-center">
+                            <div
+                                class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+                                <i class="fab fa-paypal opacity-10"></i>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0 p-3 text-center">
+                            <h6 class="text-center mb-0">Affiliate</h6>
+                            <hr class="horizontal dark my-3">
+                            <h5 class="mb-0">5</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
         @include('layouts.footers.auth.footer')
     </div>
 @endsection

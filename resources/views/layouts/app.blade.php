@@ -38,7 +38,9 @@
                     <span class="mask bg-primary opacity-6"></span>
                 </div>
             @endif
-            @include('layouts.navbars.auth.sidenav')
+            @if(!in_array(request()->route()->getName(), ['landingpage']))
+                @include('layouts.navbars.auth.sidenav')
+            @endif
                 <main class="main-content border-radius-lg">
                     @yield('content')
                 </main>

@@ -3,11 +3,25 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-sticky end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="{{ route('home') }}"
-            target="_blank">
-            {{-- <img src="./img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo"> --}}
-            <span class="ms-4 font-weight-bold text-light">Cerita Bahagianya</span>
-        </a>
+        @if(Auth::user()->role == 'admin')
+            <a class="navbar-brand m-0" href="{{ route('admin') }}"
+                target="_blank">
+                {{-- <img src="./img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo"> --}}
+                <span class="ms-4 font-weight-bold text-light">Cerita Bahagianya</span>
+            </a>
+        @elseif(Auth::user()->role == 'user')
+            <a class="navbar-brand m-0" href="{{ route('home') }}"
+                target="_blank">
+                {{-- <img src="./img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo"> --}}
+                <span class="ms-4 font-weight-bold text-light">Cerita Bahagianya</span>
+            </a>
+        @elseif(Auth::user()->role == 'affiliate')
+            <a class="navbar-brand m-0" href="{{ route('affiliate') }}"
+                target="_blank">
+                {{-- <img src="./img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo"> --}}
+                <span class="ms-4 font-weight-bold text-light">Cerita Bahagianya</span>
+            </a>
+        @endif
     </div>
     <hr class="horizontal dark mt-0">
     <div id="sidenav-collapse-main">
@@ -47,7 +61,7 @@
             </li>
             @elseif(Auth::user()->role == 'admin')
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('admin') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'admin' ? 'active' : '' }}" href="{{ route('admin') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 bg-primary text-sm opacity-10"></i>
@@ -93,7 +107,7 @@
             </li>
             @elseif(Auth::user()->role == 'affiliate')
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'affiliate' ? 'active' : '' }}" href="{{ route('affiliate') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
