@@ -33,7 +33,6 @@
                                             <div class="d-flex px-2 py-1 ms-2">
                                                 <span class="text-secondary text-xs font-weight-bold">1</span>
                                             </div>
-                                        </td>
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <span class="text-secondary text-xs font-weight-bold">A01</span>

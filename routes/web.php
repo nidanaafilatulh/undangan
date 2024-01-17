@@ -35,15 +35,17 @@ use App\Http\Controllers\TransaksiController;
 
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.perform');
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
-Route::get('/customer', [HomeController::class, 'index'])->name('customer');
-Route::get('/affiliate', [HomeAffiliateController::class, 'index'])->name('affiliate');
-Route::get('/admin', [HomeAdminController::class, 'index'])->name('admin');
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
-Route::post('/register', [RegisterController::class, 'store'])->name('register.perform');
-Route::get('/users', [UserController::class, 'show'])->name('users');
 
+Route::get('/customer', [HomeController::class, 'index'])->name('customer');
+Route::get('/affiliate', [HomeAffiliateController::class, 'index'])->name('affiliate');
+
+
+Route::get('/admin', [HomeAdminController::class, 'index'])->name('admin');
+Route::get('/users', [UserController::class, 'show'])->name('users');
 Route::get('/customerShow', [UserController::class, 'customerShow'])->name('customerShow');
 Route::get('/affiliateShow', [UserController::class, 'affiliateShow'])->name('affiliateShow');
 Route::get('/komisi', [KomisiTertransferController::class, 'show'])->name('komisi');
@@ -57,7 +59,6 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::post('/reset-password', [ResetPassword::class, 'send'])->name('reset.perform');
 	Route::get('/change-password', [ChangePassword::class, 'show'])->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->name('change.perform');
-	
 });
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
