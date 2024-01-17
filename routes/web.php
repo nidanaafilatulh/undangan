@@ -44,14 +44,21 @@ Route::get('/customer', [HomeController::class, 'index'])->name('customer');
 Route::get('/affiliate', [HomeAffiliateController::class, 'index'])->name('affiliate');
 
 
-Route::get('/admin', [HomeAdminController::class, 'index'])->name('admin');
-Route::get('/users', [UserController::class, 'show'])->name('users');
-Route::get('/customerShow', [UserController::class, 'customerShow'])->name('customerShow');
-Route::get('/affiliateShow', [UserController::class, 'affiliateShow'])->name('affiliateShow');
-Route::get('/komisi', [KomisiTertransferController::class, 'show'])->name('komisi');
-Route::post('/komisi', [KomisiTertransferController::class, 'store'])->name('komisitertransfer.store');
-Route::get('/paket', [PaketController::class, 'show'])->name('paket');
-Route::get('/transaksi', [TransaksiController::class, 'show'])->name('transaksi');
+    
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', [HomeAdminController::class, 'index'])->name('admin');
+	Route::get('/users', [UserController::class, 'show'])->name('users');
+	Route::get('/customerShow', [UserController::class, 'customerShow'])->name('customerShow');
+	Route::get('/affiliateShow', [UserController::class, 'affiliateShow'])->name('affiliateShow');
+	Route::get('/komisi', [KomisiTertransferController::class, 'show'])->name('komisi');
+	Route::post('/komisi', [KomisiTertransferController::class, 'store'])->name('komisitertransfer.store');
+	Route::get('/paket', [PaketController::class, 'show'])->name('paket');
+	Route::get('/transaksi', [TransaksiController::class, 'show'])->name('transaksi');
+
+});
+
+
 
 
 Route::group(['middleware' => 'guest'], function () {

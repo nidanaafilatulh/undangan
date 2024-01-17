@@ -23,6 +23,6 @@ class HomeAffiliateController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboardAffiliate');
+        return view('pages.affiliate.dashboardAffiliate');
     }
 }
